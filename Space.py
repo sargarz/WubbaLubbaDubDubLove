@@ -1,28 +1,41 @@
 import math
 
 
-# 1 class
-# 1 built in decorator @classmethod
-# string representation
-# 1 method
-class Alien():
+class Profile:
+    def __init__(self, name, species, interests):
+        self._name = name
+        self.species = species
+        self.interests = interests
+        
+    @property
+    def name(self):
+        return self._name
+    
+    def __str__(self):
+        return f"My name is {self.name}, I am {self.species} and my special interests are {self.interests}"
+
+
+
+class Alien(Profile):
     aliens_dating = 0
 
-    def __init__(self, name, species, galaxy: "Galaxy", intergalactic_number):
+    def __init__(self, name, interests, galaxy: "Galaxy", intergalactic_number):
+        super().__init__(name, "Alien", interests)
+        #inherits:
+        #name
+        #species
+        #interests
 
-        self._species = species # protected attirubut
-        self.galaxy = galaxy #public attribute
-        self.__intergalactic_number = intergalactic_number
- 
+        #alien attributes:
 
-        self.name = name # does name become the username?
-
+        self._galaxy = galaxy #protecte attribute, since the address should be private
+        self.__intergalactic_number = intergalactic_number #private attribute highest security
 
         Alien.aliens_dating += 1 # keeps track of total aliens
 
     @property
-    def species(self):
-        return self._species
+    def galaxy(self):
+        return self._galaxy
     
     @property
     def intergalactic_number(self):
@@ -34,7 +47,7 @@ class Alien():
         return f"Total number of registered aliens is {cls.aliens_dating}"
     
     def __str__(self):
-        presentation = f"I am allient named {self.name}, my species is {self.species} and I am from {self.galaxy} galaxy"
+        presentation = f"I am alien named {self.name}, and I am from {self.galaxy} galaxy my intergalactic number is {self.intergalactic_number}"
         return presentation
     
 
@@ -42,25 +55,28 @@ class Alien():
 
 
 
-#class human
-    # 1 class
-    # 1 built in decorator @classmethod
-    # string representation
-    # 1 method
-
-
-class Human:
+class Human(Profile):
     humans_dating = 0
 
-    def __init__(self, name, password, species, galaxy, number):
-        super().__init__(password)
-        self._name = name # protected attribute
+    def __init__(self, name, interests, country, number):
+        super().__init__(name, "Human", interests)
+        #from class user inherits:
+        #name
+        #species
+        #interests
+
+
         self.__number = number # private attribute
-        self.species = species # public attribute
-        self.galaxy = galaxy
+        self._country = country # protected attribute
+
 
         #static method
         Human.humans_dating += 1
+
+    @property
+    def country(self):
+        return self._country
+    
 
     @property
     def number(self):
@@ -68,11 +84,11 @@ class Human:
     
     @classmethod
     def humans_in_total(cls):
-        return f"Total number of registered aliens is {cls.humans_dating}"
+        return f"Total number of registered humans is {cls.humans_dating}"
     
 
     def __str__(self):
-        return f"I am human, i am from milky way and my name is {self.name}"
+        return f"I am human, i am from planet earth that is in milkyway galaxy i live in {self.country} and my name is {self.name}"
 
 
 #class galaxy
@@ -101,7 +117,7 @@ class Galaxy:
         return (self.x, self.y, self.z)
     
     def __str__(self):
-        return f"I am {self.name} galaxy and my coordinates are: {self.coordinates}"
+        return f"I am {self.name} galaxy and my coordinates are: {self.coordinates()}"
 
 
     #idk do we keep it in galaxy class or do we put it outside so there is more class interactions
@@ -123,22 +139,6 @@ class Galaxy:
 
 
 
-
-
-
-
-class Compatability_calculator:
-    print("kferfberbhj")
-    #checks the distance and other factors to determine compatability
-    # distance check uses < > / == *
-
-
-
-# class that handles user interface with passwords and shit 
-
-
-
-#class or method idk that changes the profile
 
 
 
