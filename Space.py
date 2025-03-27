@@ -1,33 +1,18 @@
 import math
 
 
-class User():
-
-    def __init__(self, password):
-        self.__password = password
-
-
-    #getter method for accesing encapsulated password
-    @property
-    def password(self):
-        return self.__password
-
-    #setter method for instances where the user wants to change the password
-    @password.setter
-    def password(self, new_password):
-        self.__password = new_password
 # 1 class
 # 1 built in decorator @classmethod
 # string representation
 # 1 method
-class Alien(User):
+class Alien():
     aliens_dating = 0
 
-    def __init__(self, name, password, species, galaxy: "Galaxy", intergalactic_security_number):
-        super().__init__(password)
+    def __init__(self, name, species, galaxy: "Galaxy", intergalactic_number):
+
         self._species = species # protected attirubut
         self.galaxy = galaxy #public attribute
-        self.intergalactic_security_number = intergalactic_security_number
+        self.__intergalactic_number = intergalactic_number
  
 
         self.name = name # does name become the username?
@@ -38,6 +23,10 @@ class Alien(User):
     @property
     def species(self):
         return self._species
+    
+    @property
+    def intergalactic_number(self):
+        return self.__intergalactic_number
     
 
     @classmethod
@@ -63,10 +52,10 @@ class Alien(User):
 class Human:
     humans_dating = 0
 
-    def __init__(self, name, password, species, galaxy, soc_security):
+    def __init__(self, name, password, species, galaxy, number):
         super().__init__(password)
         self._name = name # protected attribute
-        self.__social_security_number = soc_security # private attribute
+        self.__number = number # private attribute
         self.species = species # public attribute
         self.galaxy = galaxy
 
@@ -74,8 +63,8 @@ class Human:
         Human.humans_dating += 1
 
     @property
-    def social_security_number(self):
-        return self.__social_security_number
+    def number(self):
+        return self.__number
     
     @classmethod
     def humans_in_total(cls):
