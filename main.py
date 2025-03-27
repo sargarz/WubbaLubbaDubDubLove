@@ -45,13 +45,12 @@ def generate_user():
 
 
 
-# Load galaxies
+
 galaxies = database.load_galaxies()
 print("\n Loaded Galaxies:")
 for galaxy in galaxies:
     print(galaxy)
 
-# Load users
 users = database.load_user_data()
 print("\n Loaded Users:")
 for user in users:
