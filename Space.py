@@ -47,7 +47,7 @@ class Alien(Profile):
         return f"Total number of registered aliens is {cls.aliens_dating}"
     
     def __str__(self):
-        presentation = f"I am alien named {self.name}, and I am from {self.galaxy} galaxy my intergalactic number is {self.intergalactic_number}"
+        presentation = f"I am alien named {self.name}, and I am from {self.galaxy} galaxy."
         return presentation
     
 
