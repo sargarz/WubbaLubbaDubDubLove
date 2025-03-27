@@ -19,7 +19,7 @@ class Profile:
 class Alien(Profile):
     aliens_dating = 0
 
-    def __init__(self, name, interests, galaxy: "Galaxy", intergalactic_number):
+    def __init__(self, name, interests, galaxy, intergalactic_number):
         super().__init__(name, "Alien", interests)
         #inherits:
         #name
@@ -88,7 +88,7 @@ class Human(Profile):
     
 
     def __str__(self):
-        return f"I am human, i am from planet earth that is in milkyway galaxy i live in {self.country} and my name is {self.name}"
+        return f"I am human, my name is {self.name}, i am from planet earth that is in milkyway galaxy i live in {self.country}."
 
 
 #class galaxy

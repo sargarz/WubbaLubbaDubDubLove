@@ -1,0 +1,5 @@
+name, species, interests, galaxy/country, number
+
+blop, alien, blalbla blalblalb, Milky Way, 123413491038491
+blop2, alien, fjijfuierhferhfh, Sombrero, 34434234234234
+vardas, human, bullying, Lithuania, 324234324
