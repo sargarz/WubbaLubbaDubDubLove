@@ -1,0 +1,7 @@
+Milky Way, Spiral, 0, 0, 0
+Andromeda, Spiral, 200, 300, 150
+Triangulum, Spiral, -500, 250, 50
+Messier 87, Eliptical, 700, -240, 103
+Sombrero, Spiral, -660, -500, 70
+Whirlpool, Spiral, 450, 104, 350
+Centaurus A, Eliptical, 209, 634, 203
