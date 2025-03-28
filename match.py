@@ -26,7 +26,7 @@ class Match:
         if not potential_match:
             return None
 
-        match_result = random.choice([True, False])  # Randomly decide if it's a match
+        match_result = random.choice([True, False])  
         self._attempted_profiles.add(potential_match)
         return potential_match, match_result
 
