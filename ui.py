@@ -14,7 +14,7 @@ class UI:
         for widget in self.main_frame.winfo_children():
             widget.destroy()
 
-    def create_label(self, text, font_size=12, fg="white", bg="#2ECC71"):
+    def create_label(self, text, font_size=12, fg="white", bg="#06402B"):
         """Creates a styled label."""
         return tk.Label(
             self.main_frame,
@@ -31,7 +31,7 @@ class UI:
             text=text,
             font=("Arial", 14, "bold"),
             bg="#27AE60",
-            fg="white",
+            fg="black",
             width=20,
             height=2,
             bd=0,
@@ -50,7 +50,7 @@ class UI:
     def create_entry(self, label_text):
         """Creates a labeled entry field."""
         self.create_label(label_text, font_size=12).pack(pady=5)
-        entry = tk.Entry(self.main_frame, font=("Arial", 12), width=30)
+        entry = tk.Entry(self.main_frame, font=("Arial", 12, ), width=30,)
         entry.pack(pady=5)
         return entry
 
