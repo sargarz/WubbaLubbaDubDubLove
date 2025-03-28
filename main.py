@@ -18,7 +18,7 @@ def generate_user():
         number = input("what is your intergalactic phone number?")
         print("Our dating app is only awailable in the following galaxies:")
 
-        reader = database.load_galaxies()# Create an instance
+        reader = database.load_galaxies()# Create an instance 
         galaxies = reader.load_galaxies()
         galaxy_names = []
         for galaxy in galaxies:
