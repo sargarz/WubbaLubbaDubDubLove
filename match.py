@@ -17,45 +17,19 @@ class Match:
     def pick_random_profile(database, attempted_profiles):
         """Randomly selects a profile from the database that hasn't been attempted yet."""
         available_profiles = [profile for profile in database if profile not in attempted_profiles]
-        if available_profiles:
-            return random.choice(available_profiles)
-        else:
-            return None
+        return random.choice(available_profiles) if available_profiles else None
 
     def attempt_match(self):
-        """ Show the user a random profile. If they pick 'match', randomize whether it's a match. """
+        """Returns the selected match and randomly determines if it's a match or not."""
         potential_match = self.pick_random_profile(self._database, self._attempted_profiles)
 
         if not potential_match:
-            print("No new profiles available for matchmaking!")
             return None
 
-        print("\n Potential Match Found! ")
-        print(potential_match)  
-
-        choice = input("Do you want to match? (yes/no): ").lower()
-
-        if choice == "yes":
-            match_result = random.choice([True, False])
-
-            if match_result:
-                print("\n It's a Match! ")
-                
-                if isinstance(potential_match, Alien):
-                    print(f"Here’s their intergalactic number: {potential_match.intergalactic_number}")
-                elif isinstance(potential_match, Human):
-                    print(f"Here’s their phone number: {potential_match.number}")
-            else:
-                print("\n They weren’t interested, better luck next time!")
-
-        else:
-            print("\n You skipped this match.")
-
-        # Mark the profile as attempted
+        match_result = random.choice([True, False])  # Randomly decide if it's a match
         self._attempted_profiles.add(potential_match)
+        return potential_match, match_result
 
-        # Continue to the next match
-        self.attempt_match()
 
 
 # Load the database and profiles

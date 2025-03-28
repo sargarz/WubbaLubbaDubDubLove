@@ -1,5 +1,8 @@
 from read_database import Data
 import Space
+from read_database import Data
+from application import Application
+import tkinter as tk
 
 
 database = Data("galaxy_database.txt", "user_database.txt")
@@ -56,3 +59,10 @@ print("\n Loaded Users:")
 for user in users:
     print(user)
 
+
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = Application(root, database)  # Fixed the class name
+    root.mainloop()
