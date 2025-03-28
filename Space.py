@@ -70,7 +70,7 @@ class Alien(Profile):
         return information
 
     def __str__(self):
-        presentation = f"{self.get_information} \n{self.display_interests()}"
+        presentation = f"{self.get_information()} \n{self.display_interests()}"
         return presentation
     
 
@@ -115,7 +115,7 @@ class Human(Profile):
 
     
     def __str__(self):
-        return f"{self.get_information}\n{self.display_interests}"
+        return f"{self.get_information()}\n{self.display_interests()}"
 
 
 
