@@ -86,7 +86,7 @@ class Human(Profile):
     def humans_in_total(cls):
         return f"Total number of registered humans is {cls.humans_dating}"
     
-
+    #need include distance
     def __str__(self):
         return f"I am human, my name is {self.name}, i am from planet earth that is in milkyway galaxy i live in {self.country}."
 
