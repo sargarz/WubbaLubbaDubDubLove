@@ -30,7 +30,7 @@ class Match:
             print("No new profiles available for matchmaking!")
             return None
 
-        print("\n✨ Potential Match Found! ✨")
+        print("\n Potential Match Found! ")
         print(potential_match)  
 
         choice = input("Do you want to match? (yes/no): ").lower()
