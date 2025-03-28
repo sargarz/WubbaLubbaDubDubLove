@@ -1,5 +1,31 @@
-name, species, interests, galaxy/country, number
-
-blop, alien, blalbla blalblalb, Milky Way, 123413491038491
-blop2, alien, fjijfuierhferhfh, Sombrero, 34434234234234
-vardas, human, bullying, Lithuania, 324234324
+Blortp, alien, knitting and painting, Milky Way, 123124323123
+Xargx, alien, Alien chess, Andromeda, 98765432109876
+Zorp, alien, staring at black holes, Whirlpool, 23874659234523
+BliBlob, alien, Alien yoga, Milky Way, 58392017468392  
+Ethan, human, skiing, Finland, 1312341321
+Lina, human, walking and Surfing, Lithuania, 23123213123
+Daniel, human, Biking and reading, Portugal, 34314134143
+Ella, human, Looking at stars, Netherlands, 34414151353
+Jane, alien, Flying, Sombrero, 58392017468392 
+Jlorf, alien, Shooting asteroids, Centaurus A, 474872837283728328
+Matthew, human, Spending time in nature, Poland, 1718192021  
+Ava, human, dancing and singing, Spain, 1122334455 
+Violet, human, painting, Austria, 2223256567
+Scarlett, human, baking, Hungary, 2425262728687687
+Olivia, human, street photography, Italy, 890123452367  
+Vlort, alien, Exploring new planets, Triangulum, 5839202317468392  
+Garnertev, alien, Reading alien news, Messier 87, 1922383746502938  
+Zorbok, alien, Exploring black holes, Messier 87, 12936788475612398 
+Kiril, alien, Sunbathing, Sombrero, 482039473823934  
+Oorn, alien, Exploring parallel universes, Andromeda, 58392017468392  
+Rolandas, alien, Reading abour other galaxies, Triangulum, 49182736452093
+Evelina, human, Doing sports, Latvia, 1415161711238  
+Abigail, human, biking, Netherlands, 1617181932120  
+Isabella, human, cooking, Japan, 3344556677  
+Ekko, alien, Creating a time machine, Whirlpool, 75918273645923 
+Juliane, human, rock climbing, UK, 4321098765  
+Maja, human, poetry, South Korea, 3210987654  
+Elia, human, kayaking, Vietnam, 2109876543 
+Klorn, alien, Traveling to other dimensions, Triangulum, 8765432109  
+Glytar, alien, shape shifting, Triangulum, 321092387654  
+Rhyx, alien, collecting cristals, Andromeda, 8765432109  

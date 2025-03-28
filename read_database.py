@@ -50,7 +50,3 @@ class Data:
                         user_list.append(Space.Human(name, interests, place, number))
         return user_list
                     
-
-
-
-
