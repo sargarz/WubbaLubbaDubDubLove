@@ -4,6 +4,7 @@ from tkinter import messagebox
 from Space import Alien, Human
 from match import Match
 from read_database import Data
+import random  # Add this import for randomness
 
 
 class Application:
@@ -159,8 +160,9 @@ class Application:
 
     def show_match_ui(self, match):
         """Displays the matched profile in the same UI."""
-        matched_profile = match[0]  # Extract the matched profile object
-        match_text = str(matched_profile)  # Use __str__() method from Alien or Human
+        matched_profile = match[0]
+        match_result = match[1] 
+        match_text = str(matched_profile) 
 
         tk.Label(
             self.main_frame,
@@ -168,22 +170,32 @@ class Application:
             font=("Arial", 14, "bold"),
             fg="white",
             bg="#2ECC71",
-            wraplength=350,  # Ensures text wraps instead of stretching too long
+            wraplength=350, 
             justify="center",
         ).pack(pady=10)
 
-        self.create_styled_button("Smash", lambda: self.process_match("smash", match))
-        self.create_styled_button("Pass", lambda: self.process_match("pass", match))
+        self.create_styled_button("Smash", lambda: self.process_match("smash", match, match_result))
+        self.create_styled_button("Pass", lambda: self.process_match("pass", match, match_result))
 
-    def process_match(self, choice, match):
+    def process_match(self, choice, match, match_result):
         """Processes the user's decision and updates the UI."""
         for widget in self.main_frame.winfo_children():
             widget.destroy()
 
         if choice == "smash":
-            result_text = "It's a match! " if match[1] else " Sorry, they weren't interested."
+            if match_result:
+                result_text = "It's a match! "
+                
+                matched_profile = match[0]
+                if isinstance(matched_profile, Alien):
+                    result_text += f"Their intergalactic number is: {matched_profile.intergalactic_number}"
+                elif isinstance(matched_profile, Human):
+                    result_text += f"Their phone number is: {matched_profile.number}"
+            else:
+                result_text = "Sorry, it's not a match."
+
         else:
-            result_text = " You passed on this match."
+            result_text = "You passed on this match."
 
         tk.Label(
             self.main_frame,
