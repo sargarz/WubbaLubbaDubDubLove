@@ -1,2 +1,2 @@
 # copl_project
-we listen and we don't judge
+Run main.py and hope for the best. Uni project we wanted to cook but it cooked us.
