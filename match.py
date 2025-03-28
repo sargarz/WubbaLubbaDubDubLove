@@ -1,12 +1,12 @@
 import random
-from read_database import Data  # Import the Data class to load profiles
-from Space import Alien, Human  # Importing profile classes
+from read_database import Data  
+from Space import Alien, Human
 
 class Match:
     def __init__(self, database):
         """Initialize with a list of profiles (aliens and humans)."""
-        self._database = database  # Protected attribute
-        self._attempted_profiles = set()  # Keep track of profiles we've already matched with
+        self._database = database  
+        self._attempted_profiles = set() 
 
     @property
     def database(self):
@@ -31,7 +31,7 @@ class Match:
             return None
 
         print("\n✨ Potential Match Found! ✨")
-        print(potential_match)  # Uses __str__ method from Alien/Human class
+        print(potential_match)  
 
         choice = input("Do you want to match? (yes/no): ").lower()
 
@@ -39,19 +39,17 @@ class Match:
             match_result = random.choice([True, False])
 
             if match_result:
-                print("\n💖 It's a Match! 💖")
+                print("\n It's a Match! ")
                 
-                # Show the intergalactic number if the match is an alien
                 if isinstance(potential_match, Alien):
                     print(f"Here’s their intergalactic number: {potential_match.intergalactic_number}")
-                # Show the phone number if the match is a human
                 elif isinstance(potential_match, Human):
                     print(f"Here’s their phone number: {potential_match.number}")
             else:
-                print("\n💔 They weren’t interested, better luck next time!")
+                print("\n They weren’t interested, better luck next time!")
 
         else:
-            print("\n❌ You skipped this match.")
+            print("\n You skipped this match.")
 
         # Mark the profile as attempted
         self._attempted_profiles.add(potential_match)
@@ -61,10 +59,10 @@ class Match:
 
 
 # Load the database and profiles
-database = Data("galaxy_database.txt", "user_database.txt")  # Load data from user_database.txt
+database = Data("galaxy_database.txt", "user_database.txt") 
 
-# Load profiles into the Match object
-user_profiles = database.load_user_data()  # This will give us a list of Alien and Human objects
+# Load profiles into Match object
+user_profiles = database.load_user_data()  
 
 # Create a Match instance with loaded profiles
 match_maker = Match(user_profiles)
