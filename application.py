@@ -68,7 +68,7 @@ class Application:
 
         tk.Label(
             self.main_frame,
-            text="🚀 Create Your Profile ",
+            text="Create Your Profile ",
             font=("Arial", 14, "bold"),
             fg="white",
             bg="#2ECC71",
@@ -118,7 +118,7 @@ class Application:
 
         tk.Label(
             self.main_frame,
-            text=f"Welcome, {self.user_profile.name}! ❤️",
+            text=f"Welcome, {self.user_profile.name}!",
             font=("Arial", 14, "bold"),
             fg="white",
             bg="#2ECC71",

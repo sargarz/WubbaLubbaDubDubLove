@@ -29,7 +29,10 @@ class Match:
         match_result = random.choice([True, False])  
         self._attempted_profiles.add(potential_match)
         return potential_match, match_result
-
+    
+    def __str__(self):
+        """String representation of the Match object."""
+        return f"Match object with {len(self._database)} potential matches"
 
 
 # Load the database and profiles
