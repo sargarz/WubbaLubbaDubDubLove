@@ -11,7 +11,15 @@ class Profile:
     def name(self):
         return self._name
     
-    def __str__(self):
+    def display_interests(self):
+        interests_string = f"Interests: {self.interests}"
+        return interests_string
+    
+    def get_information(self):
+        info_string = f"Name: {self.name} \n Species: {self.species}"
+        return info_string
+
+    def __str__(self): 
         return f"My name is {self.name}, I am {self.species} and my special interests are {self.interests}"
 
 
@@ -37,17 +45,32 @@ class Alien(Profile):
     def galaxy(self):
         return self._galaxy
     
+    @galaxy.setter
+    def galaxy(self, new_galaxy):
+        self._galaxy = new_galaxy
+    
     @property
     def intergalactic_number(self):
         return self.__intergalactic_number
+    
     
 
     @classmethod
     def aliens_in_total(cls):
         return f"Total number of registered aliens is {cls.aliens_dating}"
     
+    #overridden method from class Profile
+    def display_interests(self):
+        interest_presentation = f"I am from {self.galaxy} and these are my interests: {self.interests}"
+        return interest_presentation
+    
+    #another overridden method from class Profile
+    def get_information(self):
+        information = f"I am an Alien and my name is {self.name}"
+        return information
+
     def __str__(self):
-        presentation = f"I am alien named {self.name}, and I am from {self.galaxy} galaxy."
+        presentation = f"{self.get_information()} \n{self.display_interests()}"
         return presentation
     
 
@@ -60,17 +83,13 @@ class Human(Profile):
 
     def __init__(self, name, interests, country, number):
         super().__init__(name, "Human", interests)
-        #from class user inherits:
-        #name
-        #species
-        #interests
-
+        #from class User inherits attribute name, species interests
 
         self.__number = number # private attribute
         self._country = country # protected attribute
 
 
-        #static method
+        
         Human.humans_dating += 1
 
     @property
@@ -86,15 +105,18 @@ class Human(Profile):
     def humans_in_total(cls):
         return f"Total number of registered humans is {cls.humans_dating}"
     
-    #need include distance
+
+    
+    def display_interests(self): #overridden method
+        return f"I am from {self.country} and these are my interests: {self.interests}"
+
+    def get_information(self):
+        return f"I am Human from planet earth that is in Milkyway galaxy and my name is {self.name}"
+
+    
     def __str__(self):
-        return f"I am human, my name is {self.name}, i am from planet earth that is in milkyway galaxy i live in {self.country}."
+        return f"{self.get_information()}\n{self.display_interests()}"
 
-
-#class galaxy
-    #with * and + and -
-    # stores coordinates and names of the galaxy
-    # we use the euclidead distance formula to calculate the distance between two galaxies
 
 
 
@@ -120,7 +142,6 @@ class Galaxy:
         return f"I am {self.name} galaxy and my coordinates are: {self.coordinates()}"
 
 
-    #idk do we keep it in galaxy class or do we put it outside so there is more class interactions
     def calculate_distance_to(self, another_galaxy: "Galaxy"):
         """Returns the distance between the self galaxy and another galaxy"""
         self_coordinates = self.coordinates()
