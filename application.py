@@ -12,7 +12,7 @@ class Application:
     def __init__(self, master, database):
         self.master = master
         self.master.title("Intergalactic Dating App")
-        self.master.geometry("400x600")  # Increased size for a better view
+        self.master.geometry("400x600") 
         self.master.configure(bg="#2ECC71")  # Green background
 
         self.database = database
@@ -42,28 +42,28 @@ class Application:
             "Start Finding Matches", self.start_finding_matches, state=tk.DISABLED
         )
 
-    def create_styled_button(self, text, command, state=tk.NORMAL):
-        """Creates a modern styled button with rounded corners."""
-        button = tk.Button(
+        self.update_totals()  # Call the method here to display counts
+
+    def update_totals(self):
+        """Updates the displayed totals for humans and aliens."""
+        total_humans = Human.humans_in_total()
+        total_aliens = Alien.aliens_in_total()
+
+        tk.Label(
             self.main_frame,
-            text=text,
-            font=("Arial", 14, "bold"),
-            bg="#27AE60",  # Green button
+            text=f"There are {total_humans} humans registered",
+            font=("Arial", 12),
             fg="white",
-            width=20,
-            height=2,
-            bd=0,
-            relief="flat",
-            highlightthickness=0,
-            command=command,
-            state=state,
-            activebackground="#2ECC71",  # Lighter green for active state
-            activeforeground="white",
-            cursor="hand2",  # Change cursor to hand pointer
-            pady=10,
-        )
-        button.pack(pady=10)
-        return button
+            bg="#2ECC71",
+        ).pack(pady=5)
+
+        tk.Label(
+            self.main_frame,
+            text=f"There are {total_aliens} aliens registered",
+            font=("Arial", 12),
+            fg="white",
+            bg="#2ECC71",
+        ).pack(pady=5)
 
     def create_styled_entry(self, label_text):
         """Creates a styled entry field with a label."""
@@ -71,6 +71,25 @@ class Application:
         entry = tk.Entry(self.main_frame, font=("Arial", 12), width=30)
         entry.pack(pady=5)
         return entry
+
+    def create_styled_button(self, text, command, state=tk.NORMAL):
+        """Creates a styled button with a label and command."""
+        button = tk.Button(
+            self.main_frame,
+            text=text,
+            command=command,
+            font=("Arial", 12),
+            bg="#2ECC71",
+            fg="white",
+            activebackground="#27AE60", 
+            activeforeground="white",  
+            relief="flat",
+            state=state,
+            width=20,
+            height=2,
+        )
+        button.pack(pady=10)
+        return button
 
     def create_account_screen(self):
         """Displays the account creation form."""
@@ -110,10 +129,15 @@ class Application:
             self.user_profile = Human(name, interests, extra_info, number)
         else:
             messagebox.showerror("Invalid species", "Please enter 'alien' or 'human'.")
-            return
+            return  # Added here to stop if species is invalid, but not in the wrong place
 
-        messagebox.showinfo("Success", f"Welcome, {self.user_profile.name}! ")
-        self.create_matchmaking_screen()
+        messagebox.showinfo("Success", f"Welcome, {self.user_profile.name}!")  # Moved after profile creation
+
+        # Update total counts and refresh the UI
+        self.update_totals()
+
+        self.create_matchmaking_screen()  # Show matchmaking screen after successful profile creation
+
 
     def create_matchmaking_screen(self):
         """Screen for matchmaking after account creation."""
@@ -161,12 +185,11 @@ class Application:
 
     def show_match_ui(self, match):
         """Displays the matched profile in the same UI."""
-        matched_profile = match[0]  # Extract the matched profile object
-        match_result = match[1]  # True if it's a match, False if not
+        matched_profile = match[0]  
+        match_result = match[1]  
 
-        match_text = str(matched_profile)  # Use __str__() method from Alien or Human
+        match_text = str(matched_profile) 
 
-        # Create a modern profile card-like display
         card_frame = tk.Frame(self.main_frame, bg="white", relief="flat", bd=0, pady=20)
         card_frame.pack(fill="both", expand=True, pady=20)
 
@@ -176,11 +199,10 @@ class Application:
             font=("Arial", 16, "bold"),
             fg="#2ECC71",
             bg="white",
-            wraplength=350,  # Ensures text wraps instead of stretching too long
+            wraplength=350,  
             justify="center",
         ).pack(pady=10)
 
-        # Add the "Smash" and "Pass" buttons
         self.create_styled_button("Smash", lambda: self.process_match("smash", match, match_result))
         self.create_styled_button("Pass", lambda: self.process_match("pass", match, match_result))
 
@@ -190,10 +212,9 @@ class Application:
             widget.destroy()
 
         if choice == "smash":
-            if match_result:  # If it's a match
+            if match_result:  
                 result_text = "It's a match!"
                 
-                # After a successful match, display phone number or intergalactic number
                 matched_profile = match[0]
                 if isinstance(matched_profile, Alien):
                     result_text += f"\nTheir intergalactic number is: {matched_profile.intergalactic_number}"

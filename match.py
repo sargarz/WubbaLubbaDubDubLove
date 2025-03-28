@@ -1,5 +1,5 @@
 import random
-from read_database import Data  
+from read_database import Data
 from Space import Alien, Human
 
 class Match:
@@ -26,6 +26,13 @@ class Match:
         if not potential_match:
             return None
 
+        # Display the total number of humans and aliens
+        if isinstance(potential_match, Human):
+            print(Human.humans_in_total())  # Display total humans
+        elif isinstance(potential_match, Alien):
+            print(Alien.aliens_in_total())  # Display total aliens
+
+        # Randomly determines if it's a match or not
         match_result = random.choice([True, False])  
         self._attempted_profiles.add(potential_match)
         return potential_match, match_result
@@ -33,6 +40,7 @@ class Match:
     def __str__(self):
         """String representation of the Match object."""
         return f"Match object with {len(self._database)} potential matches"
+
 
 
 # Load the database and profiles
