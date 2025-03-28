@@ -8,7 +8,7 @@ import tkinter as tk
 database = Data("galaxy_database.txt", "user_database.txt")
 
 
-def generate_user():
+def generate_user(database):
         
     """Asks user for information and then returns either a human object or an alien object"""
     print("Welcome to the intergalactic dating app")
@@ -21,8 +21,8 @@ def generate_user():
         number = input("what is your intergalactic phone number?")
         print("Our dating app is only awailable in the following galaxies:")
 
-        reader = database.load_galaxies()# Create an instance 
-        galaxies = reader.load_galaxies()
+
+        galaxies = database.load_galaxies()
         galaxy_names = []
         for galaxy in galaxies:
             print(galaxy.name)
@@ -40,29 +40,9 @@ def generate_user():
         return Space.Human(name, interests, country, number)
 
 
-#user_profile = generate_user()
-#if user_profile:
-#    print("\nProfile created successfully!")
-#    print(user_profile)
-
-
-
-
-
-galaxies = database.load_galaxies()
-print("\n Loaded Galaxies:")
-for galaxy in galaxies:
-    print(galaxy)
-
-users = database.load_user_data()
-print("\n Loaded Users:")
-for user in users:
-    print(user)
-
-
 
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = Application(root, database)  # Fixed the class name
+    app = Application(root, database) 
     root.mainloop()
