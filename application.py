@@ -159,12 +159,17 @@ class Application:
 
     def show_match_ui(self, match):
         """Displays the matched profile in the same UI."""
+        matched_profile = match[0]  # Extract the matched profile object
+        match_text = str(matched_profile)  # Use __str__() method from Alien or Human
+
         tk.Label(
             self.main_frame,
-            text=f" Matched with: {match[0].name}! ",
+            text=f"Matched with:\n{match_text}",
             font=("Arial", 14, "bold"),
             fg="white",
             bg="#2ECC71",
+            wraplength=350,  # Ensures text wraps instead of stretching too long
+            justify="center",
         ).pack(pady=10)
 
         self.create_styled_button("Smash", lambda: self.process_match("smash", match))
@@ -190,4 +195,3 @@ class Application:
 
         self.create_styled_button("Find Another Match", self.show_next_match)
         self.create_styled_button("Back to Menu", self.create_matchmaking_screen)
-
