@@ -32,77 +32,6 @@ class Application:
             "Start Finding Matches", self.start_finding_matches, state=tk.DISABLED
         )
 
-<<<<<<< HEAD
-        self.update_totals()  # Call the method here to display counts
-
-    def update_totals(self):
-        """Updates the displayed totals for humans and aliens."""
-        total_humans = Human.humans_in_total()
-        total_aliens = Alien.aliens_in_total()
-
-        tk.Label(
-            self.main_frame,
-            text=f"There are {total_humans} humans registered",
-            font=("Arial", 12),
-            fg="white",
-            bg="#2ECC71",
-        ).pack(pady=5)
-
-        tk.Label(
-            self.main_frame,
-            text=f"There are {total_aliens} aliens registered",
-            font=("Arial", 12),
-            fg="white",
-            bg="#2ECC71",
-        ).pack(pady=5)
-
-    def create_styled_entry(self, label_text):
-        """Creates a styled entry field with a label."""
-        tk.Label(self.main_frame, text=label_text, fg="white", bg="#2ECC71", font=("Arial", 12)).pack(pady=5)
-        entry = tk.Entry(self.main_frame, font=("Arial", 12), width=30)
-        entry.pack(pady=5)
-        return entry
-
-    def create_styled_button(self, text, command, state=tk.NORMAL):
-        """Creates a styled button with a label and command."""
-        button = tk.Button(
-            self.main_frame,
-            text=text,
-            command=command,
-            font=("Arial", 12),
-            bg="#2ECC71",
-            fg="white",
-            activebackground="#27AE60", 
-            activeforeground="white",  
-            relief="flat",
-            state=state,
-            width=20,
-            height=2,
-        )
-        button.pack(pady=10)
-        return button
-
-    def create_account_screen(self):
-        """Displays the account creation form."""
-        for widget in self.main_frame.winfo_children():
-            widget.destroy()
-
-        tk.Label(
-            self.main_frame,
-            text="Create Your Profile",
-            font=("Arial", 18, "bold"),
-            fg="white",
-            bg="#2ECC71",
-        ).pack(pady=20)
-
-        self.name_entry = self.create_styled_entry("Name:")
-        self.interests_entry = self.create_styled_entry("Interests:")
-        self.species_entry = self.create_styled_entry("Are you an Alien or Human?")
-        self.extra_info_entry = self.create_styled_entry(
-            "Galaxy (if Alien) or Country (if Human):"
-        )
-        self.number_entry = self.create_styled_entry("Phone/Intergalactic Number:")
-=======
     def create_account_screen(self):
         """Displays the account creation form"""
         self.ui.clear_frame()
@@ -114,7 +43,6 @@ class Application:
         self.species_entry = self.ui.create_entry("Are you an Alien or Human?")
         self.extra_info_entry = self.ui.create_entry("Galaxy (if Alien) or Country (if Human):")
         self.number_entry = self.ui.create_entry("Phone/Intergalactic Number:")
->>>>>>> 947aff3e9878afe81818609bb5821a9614779e23
 
         self.ui.create_button("Submit", self.submit_account)
         self.ui.create_button("Back", self.create_main_screen)
@@ -130,7 +58,7 @@ class Application:
         allowed_galaxies = {"Milky Way", "Andromeda", "Triangulum", "Messier 87", "Sombrero", "Whirlpool", "Centaurus A"}
 
         if not number.isdigit():
-            messagebox.showerror("Invalid phone number", "Please enter numbers only.")
+            messagebox.showerror("Invalid phone number", "Please enter numbers only for the phone number.")
             return
 
         if species == "alien":
@@ -150,15 +78,11 @@ class Application:
         messagebox.showinfo("Success", f"Welcome, {self.user_profile.name}!")  # Moved after profile creation
 
         # Update total counts and refresh the UI
-        self.update_totals()
 
         self.create_matchmaking_screen()  # Show matchmaking screen after successful profile creation
 
-<<<<<<< HEAD
-=======
         messagebox.showinfo("Success", f"Welcome, {self.user_profile.name}! :P")
         self.create_matchmaking_screen()
->>>>>>> 947aff3e9878afe81818609bb5821a9614779e23
 
 
     def create_matchmaking_screen(self):
@@ -192,39 +116,6 @@ class Application:
             self.ui.create_button("Back", self.create_matchmaking_screen)
 
     def show_match_ui(self, match):
-<<<<<<< HEAD
-        """Displays the matched profile in the same UI."""
-        matched_profile = match[0]  
-        match_result = match[1]  
-
-        match_text = str(matched_profile) 
-
-        card_frame = tk.Frame(self.main_frame, bg="white", relief="flat", bd=0, pady=20)
-        card_frame.pack(fill="both", expand=True, pady=20)
-
-        tk.Label(
-            card_frame,
-            text=f"Potential match:\n{match_text}",
-            font=("Arial", 16, "bold"),
-            fg="#2ECC71",
-            bg="white",
-            wraplength=350,  
-            justify="center",
-        ).pack(pady=10)
-
-        self.create_styled_button("Smash", lambda: self.process_match("smash", match, match_result))
-        self.create_styled_button("Pass", lambda: self.process_match("pass", match, match_result))
-
-    def process_match(self, choice, match, match_result):
-        """Processes the user's decision and updates the UI."""
-        for widget in self.main_frame.winfo_children():
-            widget.destroy()
-
-        if choice == "smash":
-            if match_result:  
-                result_text = "It's a match!"
-                
-=======
         """Displays the matched profile in the UI."""
         matched_profile = match[0]
         match_result = match[1]
@@ -243,7 +134,6 @@ class Application:
         if choice == "match":
             if match_result:
                 result_text = "It's a match! :D"
->>>>>>> 947aff3e9878afe81818609bb5821a9614779e23
                 matched_profile = match[0]
                 result_text += f"\nTheir phone number is: {matched_profile.number if isinstance(matched_profile, Human) else matched_profile.intergalactic_number}"
             else:
